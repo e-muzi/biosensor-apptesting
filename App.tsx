@@ -7,9 +7,8 @@ import { SettingsScreen } from './components/SettingsScreen';
 import { AnalysisResultScreen } from './components/AnalysisResultScreen';
 
 interface AnalysisData {
-  brightness: number;
+  results: { name: string, brightness: number }[];
   imageSrc: string;
-  pesticide: string;
 }
 
 const NavItem: React.FC<{
@@ -33,8 +32,8 @@ export default function App() {
   const [activeScreen, setActiveScreen] = useState<Screen>('capture');
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null);
 
-  const handleAnalysisComplete = (brightness: number, imageSrc: string, pesticide: string) => {
-    setAnalysisData({ brightness, imageSrc, pesticide });
+  const handleAnalysisComplete = (results: { name: string, brightness: number }[], imageSrc: string) => {
+    setAnalysisData({ results, imageSrc });
     setActiveScreen('analysis');
   };
 

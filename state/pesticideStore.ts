@@ -8,7 +8,7 @@ export interface Pesticide {
 
 export const PREDEFINED_PESTICIDES: Pesticide[] = [
   {
-    name: 'Acephate',
+    name: 'Chlorpyrifos',
     curve: [
       { concentration: 0, brightness: 5 },
       { concentration: 10, brightness: 30 },
@@ -28,7 +28,7 @@ export const PREDEFINED_PESTICIDES: Pesticide[] = [
     ],
   },
   {
-    name: 'Mancozeb',
+    name: 'Atrazine',
     curve: [
       { concentration: 0, brightness: 6 },
       { concentration: 5, brightness: 25 },
@@ -38,7 +38,7 @@ export const PREDEFINED_PESTICIDES: Pesticide[] = [
     ],
   },
   {
-    name: 'Cypermethrin',
+    name: 'Malathion',
     curve: [
       { concentration: 0, brightness: 10 },
       { concentration: 15, brightness: 50 },
@@ -51,14 +51,12 @@ export const PREDEFINED_PESTICIDES: Pesticide[] = [
 
 
 interface PesticideState {
-  selectedPesticide: string;
-  setSelectedPesticide: (name: string) => void;
+  pesticides: Pesticide[];
   getCurveForPesticide: (name: string) => CalibrationPoint[];
 }
 
-export const usePesticideStore = create<PesticideState>((set) => ({
-  selectedPesticide: PREDEFINED_PESTICIDES[0].name,
-  setSelectedPesticide: (name) => set({ selectedPesticide: name }),
+export const usePesticideStore = create<PesticideState>(() => ({
+  pesticides: PREDEFINED_PESTICIDES,
   getCurveForPesticide: (name) => {
     const pesticide = PREDEFINED_PESTICIDES.find(p => p.name === name);
     return pesticide ? pesticide.curve : [];

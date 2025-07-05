@@ -40,7 +40,7 @@ export const SettingsScreen: React.FC = () => {
       </div>
 
       <div className="mt-8 text-center text-gray-500">
-        <p className="font-bold">Aptasense v1.1.0</p>
+        <p className="font-bold">HK-Joint-School v1.1.0</p>
         <p>Biosensor Analysis Platform</p>
       </div>
     </div>
