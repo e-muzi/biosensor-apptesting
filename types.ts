@@ -11,6 +11,7 @@ export interface AnalysisResult {
 
 export interface HistoryRecord {
   id: string;
+  name: string;
   timestamp: string;
   imageSrc: string;
   results: AnalysisResult[];

@@ -33,7 +33,10 @@ export const AnalysisResultScreen: React.FC<AnalysisResultScreenProps> = ({ resu
       imageSrc,
       results: finalResults,
     };
-    addRecord(newRecord);
+    addRecord({
+      ...newRecord,
+      name: `Analysis ${new Date().toLocaleDateString()}`
+    });
     onSave();
   };
 

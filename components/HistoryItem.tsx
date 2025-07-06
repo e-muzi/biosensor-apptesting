@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { HistoryRecord } from '../types';
+import { useHistoryStore } from '../state/historyStore';
 
 interface HistoryItemProps {
   record: HistoryRecord;
@@ -8,13 +9,41 @@ interface HistoryItemProps {
 
 export const HistoryItem: React.FC<HistoryItemProps> = ({ record, onDelete }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState(record.name);
+  const updateRecordName = useHistoryStore((state) => state.updateRecordName);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleNameUpdate = () => {
+    if (name.trim() !== '') {
+      updateRecordName(record.id, name.trim());
+      setIsEditing(false);
+    }
+  };
 
   return (
     <div className="bg-gray-800 p-4 rounded-lg shadow-md flex flex-col space-y-4">
       <div className="flex items-center space-x-4">
         <img src={record.imageSrc} alt="History sample" className="w-20 h-20 rounded-md object-cover flex-shrink-0" />
         <div className="flex-grow space-y-1">
-          <p className="font-semibold text-lg text-gray-200">Multi-Pesticide Analysis</p>
+          {isEditing ? (
+            <input
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              onBlur={handleNameUpdate}
+              onKeyDown={(e) => e.key === 'Enter' && handleNameUpdate()}
+              className="bg-gray-700 text-white p-1 rounded"
+              autoFocus
+            />
+          ) : (
+            <p onDoubleClick={() => setIsEditing(true)} className="font-semibold text-lg text-gray-200">
+              {record.name}
+            </p>
+          )}
           <p className="text-xs text-gray-500">{record.timestamp}</p>
           <button onClick={() => setIsExpanded(!isExpanded)} className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold">
             {isExpanded ? 'Hide Details' : 'Show Details'}
