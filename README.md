@@ -44,3 +44,5 @@ Make sure you have [Node.js](https://nodejs.org/en/) installed!!!
 3.  **Analyze**: After uploading, you will be prompted to select a Region of Interest (ROI) on the image.
 4.  **View Results**: The app will display the calculated brightness and the corresponding pesticide concentration. This result is automatically saved to your history.
 5.  **Check History**: Go to 'History' to see a list of all your past analyses. You may clear all history data in 'Settings' function also.
+
+UPDATE: Users can now access our app directly! https://e-muzi.netlify.app/

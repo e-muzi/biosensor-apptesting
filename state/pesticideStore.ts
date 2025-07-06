@@ -8,7 +8,7 @@ export interface Pesticide {
 
 export const PREDEFINED_PESTICIDES: Pesticide[] = [
   {
-    name: 'Chlorpyrifos',
+    name: 'Acephate',
     curve: [
       { concentration: 0, brightness: 5 },
       { concentration: 10, brightness: 30 },
@@ -28,7 +28,7 @@ export const PREDEFINED_PESTICIDES: Pesticide[] = [
     ],
   },
   {
-    name: 'Atrazine',
+    name: 'Mancozeb',
     curve: [
       { concentration: 0, brightness: 6 },
       { concentration: 5, brightness: 25 },
@@ -38,7 +38,7 @@ export const PREDEFINED_PESTICIDES: Pesticide[] = [
     ],
   },
   {
-    name: 'Malathion',
+    name: 'Cypermethrin',
     curve: [
       { concentration: 0, brightness: 10 },
       { concentration: 15, brightness: 50 },
