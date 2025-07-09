@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useHistoryStore } from '../state/historyStore';
-import { AppButton } from './AppButton';
+import { useHistoryStore } from '../../state/historyStore';
+import { SettingsSection } from './';
 
 export const SettingsScreen: React.FC = () => {
   const { clearHistory } = useHistoryStore();
@@ -22,15 +22,15 @@ export const SettingsScreen: React.FC = () => {
           <h3 className="text-lg font-semibold text-gray-200">Data Management</h3>
           <p className="text-sm text-gray-400 mt-1">Permanently delete stored application data.</p>
         </div>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-gray-700 rounded-lg">
-          <div>
-            <p className="font-medium text-gray-200">Clear Measurement History</p>
-            <p className="text-sm text-gray-400">Deletes all saved analysis records.</p>
-          </div>
-          <AppButton onClick={handleClearHistory} variant="danger" className="mt-2 sm:mt-0">
-            Clear History
-          </AppButton>
-        </div>
+        
+        <SettingsSection
+          title="Clear Measurement History"
+          description="Deletes all saved analysis records."
+          actionLabel="Clear History"
+          actionDescription="Deletes all saved analysis records."
+          onAction={handleClearHistory}
+          actionVariant="danger"
+        />
 
         {feedback && (
           <div className="text-center p-2 bg-green-800 text-green-200 rounded-md">
