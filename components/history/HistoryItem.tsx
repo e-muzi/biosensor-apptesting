@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { HistoryRecord } from '../types';
-import { useHistoryStore } from '../state/historyStore';
+import type { HistoryRecord } from '../../types';
+import { useHistoryStore } from '../../state/historyStore';
 
 interface HistoryItemProps {
   record: HistoryRecord;
