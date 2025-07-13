@@ -70,16 +70,13 @@ export const CameraCapture: React.FC<CameraCaptureProps> = ({ onCapture, onClose
       <h2 id="camera-title" className="sr-only">Camera View</h2>
       <video ref={videoRef} autoPlay playsInline className="w-full h-full object-contain"></video>
       
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vmin] h-[80vmin] pointer-events-none">
-        {PESTICIDE_ROIS.map(({name, roi}) => (
-            <div 
-                key={name}
-                className="absolute border-2 border-cyan-400 border-dashed"
-                style={{ top: `${roi.y * 100}%`, left: `${roi.x * 100}%`, width: `${roi.width * 100}%`, height: `${roi.height * 100}%` }}
-            >
-                 <div className="absolute -top-5 left-0 text-cyan-400 bg-gray-900 bg-opacity-70 px-1 text-xs rounded">{name}</div>
-            </div>
-        ))}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vmin] h-[60vmin] pointer-events-none">
+        {/* Single border around the entire test kit - no individual pesticide borders */}
+        <div className="absolute border-4 border-cyan-400 border-dashed w-full h-full">
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-cyan-400 bg-gray-900 bg-opacity-70 px-2 py-1 text-sm rounded">
+            Test Kit Area
+          </div>
+        </div>
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 flex justify-center space-x-4">
